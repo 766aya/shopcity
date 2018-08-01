@@ -1,7 +1,7 @@
 // module.exports
 var mongoose = require('mongoose')
 var Schema = mongoose.Schema;
-var productSchema = new Schema({
+var UserSchema = new Schema({
 	"Username": String,
 	"Password": String,
 	"EmailAddress": String,
@@ -10,4 +10,4 @@ var productSchema = new Schema({
 	"TelAuth": Boolean
 })
 
-module.exports = mongoose.model('Users', productSchema)
+module.exports = mongoose.model('Users', UserSchema)

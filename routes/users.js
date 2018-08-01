@@ -2,9 +2,10 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 var Users = require('../moduls/users');
-
+var yzm = require('../moduls/yzm');
+var sendMail = require('../moduls/sendMail');
 // 连接MongoDB数据库
-mongoose.connect('mongodb://120.77.44.197:27017/users')
+mongoose.connect('mongodb://120.77.44.197:27017/shopping')
 
 // 监听数据库状态
 mongoose.connection.on('connected', ()=>{
@@ -17,7 +18,7 @@ mongoose.connection.on('disconnected', ()=>{
 	console.log('MongoDB connected disconnected')
 })
 
-router.get('/', function(req, res, next) {
+router.get('/', (req, res, next)=>{
 	let Username = req.param('Username');
 	let Password = req.param('Password');
 	if (Username && Password) {
@@ -33,7 +34,6 @@ router.get('/', function(req, res, next) {
 				}
 			})
 		}).then(result=>{
-			console.log(result.Password, Password)
 			if (result.Password == Password) {
 				res.json({ status: '0', msg: 'login success！'});
 				res.end()
@@ -51,7 +51,7 @@ router.get('/', function(req, res, next) {
 	}
 })
 
-router.post('/', function(req, res) {
+router.post('/', (req, res)=>{
 	let Username = req.body.Username;
 	let Password = req.body.Password;
 	let EmailAddress = req.body.EmailAddress;
@@ -113,5 +113,91 @@ router.post('/', function(req, res) {
 		res.json({ status: '1', msg: '所有字段均为必填项，不能为空！' });
 		res.end()
 	}
+})
+
+router.get('/retrieve-password/yzm', (req, res, next)=>{
+	// 生成随机验证码
+	let r = Math.random()*1000000;
+	let rm = Math.round(r)
+	if (rm.length < 6) {
+		rm = toString(rm) + toString(rm[3]);
+	}
+	// 接收前端用户信息
+	let Username = req.param('Username');
+	let EmailAddress = req.param('EmailAddress');
+
+	new Promise((resolve, reject)=>{
+		var query  = Users.where({ "Username": Username });
+		query.findOne(function (err, doc){
+			if (err) {
+				reject(err)
+			}else if(doc) {
+				resolve(doc)
+			} else {
+				reject('用户名不存在！')
+			}
+		})
+	}).then(result=>{
+		if (result.EmailAddress == EmailAddress) {
+			let dt = new Date().getTime()
+			var query  = yzm.where({ "Username": Username });
+			query.findOne(function (err, doc){
+				if (err) {
+					res.send(err)
+					res.end()
+				}else if(doc) {
+					yzm.update( {Username: Username}, {Username: Username, startTime: dt, yzm: rm}, {multi: false}, (err, rows_updated)=>{
+						if (!err) {
+							sendMail(EmailAddress, '商城系统-找回密码', `<h6>用户${Username}您好！<h6><h1>您的验证码是：${rm}，五分钟内有效。</h1>`, (err, result)=>{
+								if (!err) {
+									res.json({'status': 0, msg: '邮件发送成功！' });
+									res.end()
+								}else {
+									res.json({'status': 1, msg: '邮件发送失败！'+err})
+									res.end()
+								}
+							})
+						}
+					});
+				} else {
+					let insertData = new yzm({Username: Username, startTime: dt, yzm: rm}, false);
+					insertData.save(function (err, doc) {
+						if (err) {
+							res.json({status: '1', msg: '请尝试重新发送邮件！' });
+							res.end()
+						} else {
+							sendMail(EmailAddress, '商城系统-找回密码', `<h6>用户${Username}您好！<h6><h1>您的验证码是：${rm}，五分钟内有效。</h1>`, (err, result)=>{
+								if (!err) {
+									res.json({'status': 0, msg: '邮件发送成功！' });
+									res.end()
+								}else {
+									res.json({'status': 1, msg: '邮件发送失败！'+err})
+									res.end()
+								}
+							})
+						}
+					})
+				}
+			})
+		} else {
+			res.json({'status': 1, msg: 'Email地址不匹配！'})
+			res.end()
+		}
+	}).catch(err=>{
+		res.json({'status': 1, msg: '邮件发送失败！'+err})
+		res.end()
+	})
+});
+
+router.post('/retrieve-password', (req, res)=>{
+	let username = req.body.Username;
+	let password = req.body.password;
+	let repassword = req.body.repassword;
+	let verificationCode = req.body.verificationCode;
+
+	console.log(username, password, repassword, verificationCode)
+
+	res.json({'status': 0, msg: '密码修改成功！'})
+	res.end()
 })
 module.exports = router;
