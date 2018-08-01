@@ -192,12 +192,64 @@ router.get('/retrieve-password/yzm', (req, res, next)=>{
 router.post('/retrieve-password', (req, res)=>{
 	let username = req.body.Username;
 	let password = req.body.password;
+	let EmailAddress = req.body.EmailAddress
 	let repassword = req.body.repassword;
 	let verificationCode = req.body.verificationCode;
-
-	console.log(username, password, repassword, verificationCode)
-
-	res.json({'status': 0, msg: '密码修改成功！'})
-	res.end()
+	// 判断信息是否完整
+	if (username && password && repassword && verificationCode && EmailAddress) {
+		var queryUser = Users.where({ "Username": username });
+		var queryYzm  = yzm.where({ "Username": username });
+		queryUser.findOne(function (err, doc){
+			if (!err && doc) {
+				// 判断邮箱验证
+				if (!doc.EmailAuth) {
+					new Promise((resolve, reject)=>{
+						queryYzm.findOne(function(err, doc) {
+							if (!err) {
+								resolve(doc)
+							} else {
+								reject(err)
+							}
+						})
+					}).then(result=>{
+						let CurrentTime = new Date().getTime()
+						let startTime = parseInt(result.startTime)
+						const RezPwd  = /^(\w){6,20}$/;
+						if (password == repassword && RezPwd.test(password)) {
+							if (doc) {
+								if (startTime+5*60*1000 >= CurrentTime ) {
+									//做到这里了 记着点
+									res.json({startTime: startTime, CurrentTime: CurrentTime, msg: 0})
+									res.end()
+								} else {
+									res.json({'status': 1, msg: '你的验证码过期了，大哥！'})
+									res.end()
+								}
+							} else {
+								res.json({'status': 1, msg: '你还没有获取验证码吧？大哥！'})
+								res.end()
+							}
+						} else {
+							res.json({'status': 1, msg: '两次密码不一致，或者太简单了！'})
+							res.end()
+						}
+					}).catch(err=>{
+						res.json({'status': 1, msg: err})
+						res.end()
+					})
+				} else {
+					res.json({'status': 1, msg: '邮箱未认证，无法使用此功能！'})
+					res.end()
+				}
+			} else {
+				res.status(500)
+				res.json({'status': 1, msg: '数据库发生错误，请稍后尝试！'})
+				res.end()
+			}
+		})
+	} else {
+		res.json({'status': 1, msg: '所有字段均为必填项，不能为空！'})
+		res.end()
+	}
 })
 module.exports = router;
