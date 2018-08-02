@@ -24,10 +24,13 @@ router.get('/', function(req, res, next) {
 	let sort = parseInt(req.param("sort"));
 	let Gte = parseInt(req.param("gte"));
 	let Lte = parseInt(req.param("lte"));
-	console.log(sort)
 	let params = {};
 	let skip = (page-1)*pageSize;
-
+	if (page || pageSize || sort || Gte || Lte) {
+		res.json({status:1, msg: '参数不全，访问失败！'})
+		res.end()
+		return false
+	}
 	var goodsModel;
 	var pages;
 	if (Gte == Lte) {
