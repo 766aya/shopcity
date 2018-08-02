@@ -202,7 +202,7 @@ router.post('/retrieve-password', (req, res)=>{
 		queryUser.findOne(function (err, doc){
 			if (!err && doc) {
 				// 判断邮箱验证
-				if (!doc.EmailAuth) {
+				if (doc.EmailAuth) {
 					new Promise((resolve, reject)=>{
 						queryYzm.findOne(function(err, doc) {
 							if (!err) {
@@ -217,10 +217,18 @@ router.post('/retrieve-password', (req, res)=>{
 						const RezPwd  = /^(\w){6,20}$/;
 						if (password == repassword && RezPwd.test(password)) {
 							if (doc) {
-								if (startTime+5*60*1000 >= CurrentTime ) {
-									//做到这里了 记着点
-									res.json({startTime: startTime, CurrentTime: CurrentTime, msg: 0})
-									res.end()
+								if (startTime+5*60*1000 >= CurrentTime && verificationCode==result.yzm) {
+									new Promise((resolve, reject)=>{
+										Users.update({Username: username}, {Password: password}, {multi: false}, (err, rows_updated)=>{
+											if (!err) {
+												res.json({'status': 0, msg: '密码修改成功！'})
+												res.end()
+											} else {
+												res.json({'status': 1, msg: '密码修改失败！'})
+												res.end()
+											}
+										})
+									})
 								} else {
 									res.json({'status': 1, msg: '你的验证码过期了，大哥！'})
 									res.end()
@@ -243,7 +251,7 @@ router.post('/retrieve-password', (req, res)=>{
 				}
 			} else {
 				res.status(500)
-				res.json({'status': 1, msg: '数据库发生错误，请稍后尝试！'})
+				res.json({'status': 1, msg: '用户名不存在！'})
 				res.end()
 			}
 		})
