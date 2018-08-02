@@ -19,17 +19,35 @@ mongoose.connection.on('disconnected', ()=>{
 
 /* GET Goods Module. */
 router.get('/', function(req, res, next) {
-	let page = parseInt(req.param('page'));
-	let pageSize = parseInt(req.param("pageSize"));
-	let sort = parseInt(req.param("sort"));
-	let Gte = parseInt(req.param("gte"));
-	let Lte = parseInt(req.param("lte"));
+	let page = 	req.param('page');
+	let pageSize = req.param("pageSize");
+	let sort = req.param("sort");
+	let Gte = req.param("gte");
+	let Lte = req.param("lte");
 	let params = {};
-	let skip = (page-1)*pageSize;
-	if (page || pageSize || sort || Gte || Lte) {
-		res.json({status:1, msg: '参数不全，访问失败！'})
+	let skip;
+	if (page == undefined) {
+		res.json({status:1, msg: ''})
 		res.end()
-		return false
+	} else if (pageSize == undefined) {
+		res.json({status:1, msg: ''})
+		res.end()
+	} else if (sort == undefined) {
+		res.json({status:1, msg: ''})
+		res.end()
+	} else if (Gte == undefined) {
+		res.json({status:1, msg: ''})
+		res.end()
+	} else if (Lte == undefined) {
+		res.json({status:1, msg: ''})
+		res.end()
+	} else {
+		page = parseInt(page)
+		pageSize = parseInt(pageSize)
+		sort = parseInt(sort)
+		Gte = parseInt(Gte)
+		Lte = parseInt(Lte)
+		skip = (page-1)*pageSize;
 	}
 	var goodsModel;
 	var pages;

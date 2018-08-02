@@ -19,8 +19,13 @@ mongoose.connection.on('disconnected', ()=>{
 })
 
 router.get('/', (req, res, next)=>{
-	let Username = req.param('Username');
-	let Password = req.param('Password');
+	res.send('这里是登录接口！')
+	res.ene()
+})
+
+router.post('/login', (req, res, next)=>{
+	let Username = req.body.Username;
+	let Password = req.body.Password;
 	if (Username && Password) {
 		new Promise((resolve, reject)=>{
 			var query  = Users.where({ "Username": Username });
@@ -35,6 +40,15 @@ router.get('/', (req, res, next)=>{
 			})
 		}).then(result=>{
 			if (result.Password == Password) {
+				res.cookie('userID', result._id, {
+					path: '/',
+					maxAge: 1000*60*60
+				})
+				res.cookie('username', result.Username, {
+					path: '/',
+					maxAge: 1000*60*60
+				})
+				// req.session.user = result;
 				res.json({ status: '0', msg: 'login success！'});
 				res.end()
 			} else {
@@ -51,19 +65,20 @@ router.get('/', (req, res, next)=>{
 	}
 })
 
-router.post('/', (req, res)=>{
+router.post('/register', (req, res)=>{
 	let Username = req.body.Username;
 	let Password = req.body.Password;
 	let EmailAddress = req.body.EmailAddress;
 	let TelPhoneNumber = req.body.TelPhoneNumber;
 
-	const RezUser = /^[a-zA-Z]{1}([a-zA-Z0-9]|[._-]){4,19}$/;
+	const RezUser1 = /^[a-zA-Z]{1}([a-zA-Z0-9]|[._-]){4,19}$/;
+	const RezUser2 = /^([\u4E00-\uFA29]|[\uE7C7-\uE7F3]|[a-zA-Z0-9_-]){1,20}$/;
 	const RezPwd  = /^(\w){6,20}$/;
 	const ReTelNumber = /^[1][3,4,5,7,8][0-9]{9}$/;
 	const ReMail = /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/;
 
 	if(Username && Password && EmailAddress && TelPhoneNumber) {
-		if(!RezUser.test(Username)) {
+		if(!RezUser1.test(Username) && !RezUser2.test(Username)) {
 			res.json({ status: '1', msg: '用户名不符合要求！'});
 			res.end()
 		}else if(!RezPwd.test(Password)) {
@@ -259,5 +274,18 @@ router.post('/retrieve-password', (req, res)=>{
 		res.json({'status': 1, msg: '所有字段均为必填项，不能为空！'})
 		res.end()
 	}
+})
+
+router.post('/logout', (req, res)=>{
+	res.cookie('userID',"",{
+		path: '/',
+		maxAge: -1
+	})
+	res.json({
+		status: 0,
+		msg: '',
+		result: ''
+	})
+	res.end()
 })
 module.exports = router;
