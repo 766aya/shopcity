@@ -23,6 +23,28 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//登陆拦截
+app.use((req, res, next)=>{
+	if(req.cookies.userID) {
+		next();
+	} else {
+		if (req.originalUrl == '/users/login' || req.originalUrl == '/users/logout') {
+			next();
+		}else if(req.originalUrl == '/users/retrieve-password' || req.originalUrl == '/users/retrieve-password/yzm') {
+			next();
+		}else if(req.originalUrl.indexOf('/goods') > -1){
+			next();
+		}else {
+			res.json({
+				status: '10001',
+				msg: '当前未登录！',
+				result: ''
+			})
+			res.end()
+		}
+	}
+})
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/goods', goodsRouter);
