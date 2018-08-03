@@ -1,0 +1,3 @@
+2018-08-02 10:41 +08:00: (node:23426) DeprecationWarning: current URL string parser is deprecated, and will be removed in a future version. To use the new parser, pass option { useNewUrlParser: true } to MongoClient.connect.
+2018-08-02 10:42 +08:00: Thu, 02 Aug 2018 02:42:49 GMT express deprecated req.param(name): Use req.params, req.body, or req.query instead at routes/users.js:22:21
+2018-08-02 10:42 +08:00: Thu, 02 Aug 2018 02:42:49 GMT express deprecated req.param(name): Use req.params, req.body, or req.query instead at routes/users.js:23:21
