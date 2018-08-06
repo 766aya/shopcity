@@ -2,3 +2,76 @@
 2018-08-02 10:41 +08:00: MongoDB connected success
 2018-08-02 10:42 +08:00: [0mGET /users?Username=admin&Password=zhouqq123 [32m200 [0m63.464 ms - 39[0m
 2018-08-02 10:42 +08:00: [0mGET /favicon.ico [33m404 [0m4.385 ms - 130[0m
+2018-08-03 15:06 +08:00: MongoDB connected success
+2018-08-03 15:06 +08:00: MongoDB connected success
+2018-08-03 15:07 +08:00: [0mGET /goods/details?productId=100001 [33m404 [0m11.872 ms - 139[0m
+2018-08-03 15:07 +08:00: [0mGET /favicon.ico [32m200 [0m1.036 ms - 57[0m
+2018-08-03 15:10 +08:00: MongoDB connected success
+2018-08-03 15:10 +08:00: MongoDB connected success
+2018-08-03 15:10 +08:00: [0mGET /goods [36m304 [0m9.287 ms - -[0m
+2018-08-03 15:10 +08:00: MongoDB connected success
+2018-08-03 15:10 +08:00: MongoDB connected success
+2018-08-03 15:10 +08:00: [0mGET /favicon.ico [32m200 [0m4.821 ms - 57[0m
+2018-08-03 15:10 +08:00: [0mGET /goods/details [32m200 [0m3.318 ms - -[0m
+2018-08-03 15:10 +08:00: [0mGET /favicon.ico [36m304 [0m0.854 ms - -[0m
+2018-08-03 15:10 +08:00: [0mGET /goods/details?productId=100001 [32m200 [0m0.788 ms - 6[0m
+2018-08-03 15:10 +08:00: [0mGET /favicon.ico [36m304 [0m0.473 ms - -[0m
+2018-08-03 15:15 +08:00: [0mGET /goods/details?productId=100001 [36m304 [0m0.955 ms - -[0m
+2018-08-03 15:15 +08:00: [0mGET /favicon.ico [32m200 [0m0.593 ms - 57[0m
+2018-08-03 15:15 +08:00: [0mGET /goods/details?productId=100001 [36m304 [0m0.763 ms - -[0m
+2018-08-03 15:15 +08:00: [0mGET /favicon.ico [32m200 [0m0.637 ms - 57[0m
+2018-08-03 15:16 +08:00: MongoDB connected success
+MongoDB connected success
+2018-08-03 15:16 +08:00: [0mGET /goods/details?productId=100001 [32m200 [0m50.935 ms - 2[0m
+2018-08-03 15:16 +08:00: [0mGET /favicon.ico [32m200 [0m0.724 ms - 57[0m
+2018-08-03 15:16 +08:00: [0mGET /goods/details?productId=100001 [36m304 [0m52.947 ms - -[0m
+2018-08-03 15:16 +08:00: [0mGET /favicon.ico [32m200 [0m0.757 ms - 57[0m
+2018-08-03 15:16 +08:00: MongoDB connected success
+2018-08-03 15:16 +08:00: MongoDB connected success
+2018-08-03 15:16 +08:00: [0mGET /goods/details?productId=100001 [32m200 [0m168.215 ms - 2266[0m
+2018-08-03 15:16 +08:00: [0mGET /favicon.ico [32m200 [0m1.146 ms - 57[0m
+2018-08-03 15:18 +08:00: MongoDB connected success
+2018-08-03 15:18 +08:00: MongoDB connected success
+2018-08-03 15:18 +08:00: [0mGET /goods/details?productId=100001 [32m200 [0m71.912 ms - 2[0m
+2018-08-03 15:18 +08:00: [0mGET /favicon.ico [32m200 [0m0.717 ms - 57[0m
+2018-08-03 15:19 +08:00: [0mGET /goods/details?productId=100001 [36m304 [0m46.770 ms - -[0m
+2018-08-03 15:19 +08:00: [0mGET /favicon.ico [32m200 [0m0.571 ms - 57[0m
+2018-08-03 15:19 +08:00: [0mGET /goods/details?productId=10001 [32m200 [0m41.477 ms - 173[0m
+2018-08-03 15:19 +08:00: [0mGET /favicon.ico [36m304 [0m0.617 ms - -[0m
+2018-08-03 15:27 +08:00: [0mGET /goods/details?productId=10001 [36m304 [0m38.942 ms - -[0m
+2018-08-03 15:27 +08:00: [0mGET /favicon.ico [32m200 [0m0.790 ms - 57[0m
+2018-08-03 15:28 +08:00: MongoDB connected success
+2018-08-03 15:28 +08:00: MongoDB connected success
+2018-08-03 15:28 +08:00: [0mGET /goods/details?productId=10001 [32m200 [0m99.969 ms - 570[0m
+2018-08-03 15:28 +08:00: [0mGET /favicon.ico [32m200 [0m0.643 ms - 57[0m
+2018-08-03 15:28 +08:00: [0mGET /goods/details?productId=10001 [36m304 [0m40.304 ms - -[0m
+2018-08-03 15:28 +08:00: [0mGET /favicon.ico [36m304 [0m1.278 ms - -[0m
+2018-08-03 15:29 +08:00: MongoDB connected success
+2018-08-03 15:29 +08:00: MongoDB connected success
+2018-08-03 15:29 +08:00: [0mGET /goods/details?productId=10001 [36m304 [0m116.350 ms - -[0m
+2018-08-03 15:29 +08:00: [0mGET /favicon.ico [36m304 [0m0.879 ms - -[0m
+2018-08-03 15:31 +08:00: MongoDB connected success
+MongoDB connected success
+2018-08-03 15:31 +08:00: [0mGET /goods/details?productId=10001 [32m200 [0m66.751 ms - 624[0m
+2018-08-03 15:31 +08:00: [0mGET /favicon.ico [36m304 [0m0.996 ms - -[0m
+2018-08-03 15:32 +08:00: MongoDB connected success
+2018-08-03 15:32 +08:00: MongoDB connected success
+2018-08-03 15:32 +08:00: [0mGET /goods/details?productId=10001 [32m200 [0m109.133 ms - 173[0m
+2018-08-03 15:32 +08:00: You have triggered an unhandledRejection, you may have forgotten to catch a Promise rejection:
+2018-08-03 15:32 +08:00: [0mGET /favicon.ico [36m304 [0m1.688 ms - -[0m
+2018-08-03 15:34 +08:00: MongoDB connected success
+2018-08-03 15:34 +08:00: MongoDB connected success
+2018-08-03 15:34 +08:00: MongoDB connected success
+2018-08-03 15:34 +08:00: MongoDB connected success
+2018-08-03 15:34 +08:00: [0mGET /goods/details?productId=10001 [32m200 [0m156.796 ms - 736[0m
+2018-08-03 15:34 +08:00: [0mGET /favicon.ico [36m304 [0m2.495 ms - -[0m
+2018-08-03 15:35 +08:00: [0mGET /goods/details?productId=100001 [32m200 [0m38.697 ms - 54[0m
+2018-08-03 15:35 +08:00: [0mGET /favicon.ico [36m304 [0m0.830 ms - -[0m
+2018-08-03 15:36 +08:00: MongoDB connected success
+2018-08-03 15:36 +08:00: MongoDB connected success
+2018-08-03 15:36 +08:00: [0mGET /goods/details?productId=100001 [32m200 [0m59.200 ms - 53[0m
+2018-08-03 15:36 +08:00: [0mGET /favicon.ico [36m304 [0m2.181 ms - -[0m
+2018-08-03 15:36 +08:00: [0mGET /goods/details?productId=10001 [36m304 [0m46.093 ms - -[0m
+2018-08-03 15:36 +08:00: [0mGET /favicon.ico [36m304 [0m0.544 ms - -[0m
+2018-08-03 15:36 +08:00: [0mGET /goods/details?productId=10002 [32m200 [0m38.664 ms - 730[0m
+2018-08-03 15:36 +08:00: [0mGET /favicon.ico [36m304 [0m0.611 ms - -[0m
