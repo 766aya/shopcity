@@ -112,4 +112,66 @@ router.get('/', function(req, res, next) {
 	}
 });
 
+router.get('/details', function(req, res, next) {
+	let productId = req.param('productId');
+	if (productId == undefined) {
+		res.json({
+			status: '1',
+			msg: 'productId is undefined',
+			result: ''
+		});
+	}else {
+		productId = parseInt(productId);
+		let query = Goods.find({"productId": productId});
+		query.exec({}, (err, doc)=>{
+			if (doc && doc.length != 0) {
+				new Promise((resolve, reject)=>{
+					let data = {
+						"productName": doc[0].productName,
+						"productDescription": doc[0].productDescription,
+						"salePrice": doc[0].salePrice,
+						"salePriceDiscount": (doc[0].salePrice * 0.8),
+						"productImgList": [
+							'http://img.hb.aicdn.com/7e3d21cd1034bb6b07f6a207348305fb1b4038eb26e4f-qGYDzs_fw658',
+						 	'http://img.hb.aicdn.com/5bc2af3f251e29fb904fea6966e0424c6c1699491eaa4-z1IR6E_fw658',
+						 	'http://img.hb.aicdn.com/e3ce0bf406df30db5a401fb722b313bfbbade3c13cb23-9mZ5OJ_fw658',
+						 	'http://img.hb.aicdn.com/bc043aacfeab60b7e4ef1295af1fa819b8ed5e2e3dedf-hRVHR5_fw658',
+						 	'http://img.hb.aicdn.com/40c0eebce2deeb3ab980b99dee58af99c083027c4e069-kbz3bP_fw658'
+						],
+						"details": 'http://img.hb.aicdn.com/1f43d83bce2501f2037f3ebbbda81f3c473f511a1cef9d-fG6rmw_fw658.jpg'
+					}
+					resolve(data)
+				}).then(result=>{
+					res.json({status: 0, msg: 'get detailsInfo success', result:result})
+					res.end()
+				}).catch(err=>{
+					res.json({
+						status: 1,
+						msg: 'get detailsInfo error',
+						result: err
+					});
+					res.end()
+				})
+			} else {
+				if (err) {
+					res.json({
+						status: 1,
+						msg: 'get productId error',
+						result: err
+					});
+					res.end()
+				} else {
+					res.json({
+						status: 1,
+						msg: '该商品ID不存在',
+						result: ''
+					});
+					res.end()
+				}
+			}
+			
+		})
+	}
+});
+
 module.exports = router;

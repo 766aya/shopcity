@@ -1,6 +1,7 @@
 2018-08-02 10:41 +08:00: (node:23426) DeprecationWarning: current URL string parser is deprecated, and will be removed in a future version. To use the new parser, pass option { useNewUrlParser: true } to MongoClient.connect.
 2018-08-02 10:42 +08:00: Thu, 02 Aug 2018 02:42:49 GMT express deprecated req.param(name): Use req.params, req.body, or req.query instead at routes/users.js:22:21
 2018-08-02 10:42 +08:00: Thu, 02 Aug 2018 02:42:49 GMT express deprecated req.param(name): Use req.params, req.body, or req.query instead at routes/users.js:23:21
+<<<<<<< HEAD
 2018-08-03 14:50 +08:00: (node:26697) DeprecationWarning: current URL string parser is deprecated, and will be removed in a future version. To use the new parser, pass option { useNewUrlParser: true } to MongoClient.connect.
 2018-08-03 14:52 +08:00: (node:26907) DeprecationWarning: current URL string parser is deprecated, and will be removed in a future version. To use the new parser, pass option { useNewUrlParser: true } to MongoClient.connect.
 2018-08-03 14:54 +08:00: Fri, 03 Aug 2018 06:54:05 GMT express deprecated req.param(name): Use req.params, req.body, or req.query instead at routes/goods.js:22:18
@@ -8,3 +9,54 @@
 2018-08-03 14:54 +08:00: Fri, 03 Aug 2018 06:54:05 GMT express deprecated req.param(name): Use req.params, req.body, or req.query instead at routes/goods.js:24:17
 2018-08-03 14:54 +08:00: Fri, 03 Aug 2018 06:54:05 GMT express deprecated req.param(name): Use req.params, req.body, or req.query instead at routes/goods.js:25:16
 2018-08-03 14:54 +08:00: Fri, 03 Aug 2018 06:54:05 GMT express deprecated req.param(name): Use req.params, req.body, or req.query instead at routes/goods.js:26:16
+=======
+2018-08-03 15:06 +08:00: (node:14424) DeprecationWarning: current URL string parser is deprecated, and will be removed in a future version. To use the new parser, pass option { useNewUrlParser: true } to MongoClient.connect.
+2018-08-03 15:10 +08:00: (node:9644) DeprecationWarning: current URL string parser is deprecated, and will be removed in a future version. To use the new parser, pass option { useNewUrlParser: true } to MongoClient.connect.
+2018-08-03 15:10 +08:00: Fri, 03 Aug 2018 07:10:39 GMT express deprecated req.param(name): Use req.params, req.body, or req.query instead at routes\goods.js:22:18
+2018-08-03 15:10 +08:00: Fri, 03 Aug 2018 07:10:39 GMT express deprecated req.param(name): Use req.params, req.body, or req.query instead at routes\goods.js:23:21
+2018-08-03 15:10 +08:00: Fri, 03 Aug 2018 07:10:39 GMT express deprecated req.param(name): Use req.params, req.body, or req.query instead at routes\goods.js:24:17
+Fri, 03 Aug 2018 07:10:39 GMT express deprecated req.param(name): Use req.params, req.body, or req.query instead at routes\goods.js:25:16
+2018-08-03 15:10 +08:00: Fri, 03 Aug 2018 07:10:39 GMT express deprecated req.param(name): Use req.params, req.body, or req.query instead at routes\goods.js:26:16
+2018-08-03 15:10 +08:00: Error: Can't set headers after they are sent.
+    at validateHeader (_http_outgoing.js:491:11)
+    at ServerResponse.setHeader (_http_outgoing.js:498:3)
+    at ServerResponse.header (E:\shop\shopServer\node_modules\_express@4.16.3@express\lib\response.js:767:10)
+    at ServerResponse.json (E:\shop\shopServer\node_modules\_express@4.16.3@express\lib\response.js:264:10)
+    at goodsModel.exec (E:\shop\shopServer\routes\goods.js:66:10)
+    at E:\shop\shopServer\node_modules\_mongoose@5.2.6@mongoose\lib\model.js:4451:16
+    at (anonymous function).call (E:\shop\shopServer\node_modules\_mongoose@5.2.6@mongoose\lib\query.js:3606:7)
+    at process.nextTick (E:\shop\shopServer\node_modules\_mongoose@5.2.6@mongoose\lib\helpers\query\completeMany.js:35:39)
+    at args.(anonymous function) (C:\Users\Yuner\AppData\Roaming\npm\node_modules\pm2\node_modules\_event-loop-inspector@1.0.1@event-loop-inspector\index.js:133:29)
+    at _combinedTickCallback (internal/process/next_tick.js:131:7)
+    at process._tickDomainCallback (internal/process/next_tick.js:218:9)
+2018-08-03 15:10 +08:00: (node:19268) DeprecationWarning: current URL string parser is deprecated, and will be removed in a future version. To use the new parser, pass option { useNewUrlParser: true } to MongoClient.connect.
+2018-08-03 15:10 +08:00: Fri, 03 Aug 2018 07:10:42 GMT express deprecated req.param(name): Use req.params, req.body, or req.query instead at routes\goods.js:116:18
+2018-08-03 15:16 +08:00: (node:12652) DeprecationWarning: current URL string parser is deprecated, and will be removed in a future version. To use the new parser, pass option { useNewUrlParser: true } to MongoClient.connect.
+2018-08-03 15:16 +08:00: Fri, 03 Aug 2018 07:16:13 GMT express deprecated req.param(name): Use req.params, req.body, or req.query instead at routes\goods.js:116:22
+2018-08-03 15:16 +08:00: (node:16444) DeprecationWarning: current URL string parser is deprecated, and will be removed in a future version. To use the new parser, pass option { useNewUrlParser: true } to MongoClient.connect.
+2018-08-03 15:16 +08:00: Fri, 03 Aug 2018 07:16:43 GMT express deprecated req.param(name): Use req.params, req.body, or req.query instead at routes\goods.js:116:22
+2018-08-03 15:18 +08:00: (node:18696) DeprecationWarning: current URL string parser is deprecated, and will be removed in a future version. To use the new parser, pass option { useNewUrlParser: true } to MongoClient.connect.
+2018-08-03 15:18 +08:00: Fri, 03 Aug 2018 07:18:57 GMT express deprecated req.param(name): Use req.params, req.body, or req.query instead at routes\goods.js:116:22
+2018-08-03 15:28 +08:00: (node:18664) DeprecationWarning: current URL string parser is deprecated, and will be removed in a future version. To use the new parser, pass option { useNewUrlParser: true } to MongoClient.connect.
+2018-08-03 15:28 +08:00: Fri, 03 Aug 2018 07:28:00 GMT express deprecated req.param(name): Use req.params, req.body, or req.query instead at routes\goods.js:116:22
+2018-08-03 15:29 +08:00: (node:6908) DeprecationWarning: current URL string parser is deprecated, and will be removed in a future version. To use the new parser, pass option { useNewUrlParser: true } to MongoClient.connect.
+2018-08-03 15:29 +08:00: Fri, 03 Aug 2018 07:29:07 GMT express deprecated req.param(name): Use req.params, req.body, or req.query instead at routes\goods.js:116:22
+2018-08-03 15:31 +08:00: (node:2684) DeprecationWarning: current URL string parser is deprecated, and will be removed in a future version. To use the new parser, pass option { useNewUrlParser: true } to MongoClient.connect.
+2018-08-03 15:31 +08:00: Fri, 03 Aug 2018 07:31:40 GMT express deprecated req.param(name): Use req.params, req.body, or req.query instead at routes\goods.js:116:22
+2018-08-03 15:32 +08:00: (node:14912) DeprecationWarning: current URL string parser is deprecated, and will be removed in a future version. To use the new parser, pass option { useNewUrlParser: true } to MongoClient.connect.
+2018-08-03 15:32 +08:00: Fri, 03 Aug 2018 07:32:35 GMT express deprecated req.param(name): Use req.params, req.body, or req.query instead at routes\goods.js:116:22
+2018-08-03 15:32 +08:00: Error: Can't set headers after they are sent.
+    at validateHeader (_http_outgoing.js:491:11)
+    at ServerResponse.setHeader (_http_outgoing.js:498:3)
+    at ServerResponse.header (E:\shop\shopServer\node_modules\_express@4.16.3@express\lib\response.js:767:10)
+    at ServerResponse.send (E:\shop\shopServer\node_modules\_express@4.16.3@express\lib\response.js:170:12)
+    at ServerResponse.json (E:\shop\shopServer\node_modules\_express@4.16.3@express\lib\response.js:267:15)
+    at Promise.then.catch.err (E:\shop\shopServer\routes\goods.js:148:9)
+    at <anonymous>
+    at process._tickDomainCallback (internal/process/next_tick.js:228:7)
+2018-08-03 15:34 +08:00: (node:17240) DeprecationWarning: current URL string parser is deprecated, and will be removed in a future version. To use the new parser, pass option { useNewUrlParser: true } to MongoClient.connect.
+2018-08-03 15:34 +08:00: (node:3712) DeprecationWarning: current URL string parser is deprecated, and will be removed in a future version. To use the new parser, pass option { useNewUrlParser: true } to MongoClient.connect.
+2018-08-03 15:34 +08:00: Fri, 03 Aug 2018 07:34:46 GMT express deprecated req.param(name): Use req.params, req.body, or req.query instead at routes\goods.js:116:22
+2018-08-03 15:36 +08:00: (node:17392) DeprecationWarning: current URL string parser is deprecated, and will be removed in a future version. To use the new parser, pass option { useNewUrlParser: true } to MongoClient.connect.
+2018-08-03 15:36 +08:00: Fri, 03 Aug 2018 07:36:32 GMT express deprecated req.param(name): Use req.params, req.body, or req.query instead at routes\goods.js:116:22
+>>>>>>> 2cd0c8bf7a7eaeed65f71fcfc7a4e786ac2ab229
